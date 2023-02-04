@@ -1,10 +1,16 @@
 const addForm = document.querySelector('.add');
 const search = document.querySelector('.search input');
 const list = document.querySelector('.todos');
-
+const clock = document.querySelector('.time');
+const tick = () => {
 var dt = new Date();
-document.getElementById("datetime").innerHTML = dt.toLocaleString();
+const time = dt.toLocaleString();
 
+const html = `
+<span id="datetime">${time}</span>
+`;
+  clock.innerHTML = html;
+}
 const generateTemplate = todo => {
   const html = `
     <li class="list-group-item d-flex justify-content-between align-items-center">
@@ -58,3 +64,5 @@ search.addEventListener('keyup', () => {
   filterTodos(term);
 
 });
+
+setInterval(tick, 1000);
